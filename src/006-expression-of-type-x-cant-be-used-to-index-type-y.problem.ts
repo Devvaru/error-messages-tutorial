@@ -4,6 +4,17 @@ const productPrices = {
   Orange: 0.8,
 };
 
-const getPrice = (productName: string) => {
+const getPrice = (productName: keyof typeof productPrices) => {
   return productPrices[productName];
 };
+
+getPrice("Apple");
+
+// @ts-expect-error
+getPrice("Pear");
+
+// OR
+
+// const getPrice = (productName: string) => {
+//   return productPrices[productName as keyof typeof productPrices];
+// };
